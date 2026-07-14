@@ -13,22 +13,52 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    html, body { margin: 0; padding: 0; }
+    html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: hidden; }
     * { box-sizing: border-box; }
     ::selection { background: #7F7F7F; color: #100016; }
+    img { max-width: 100%; }
+
+    @media (max-width: 720px) {
+      [data-nav] { padding: 14px 20px !important; flex-wrap: wrap; row-gap: 12px; }
+      [data-nav-links] { gap: 18px !important; font-size: 12px !important; }
+
+      [data-screen-label="Hero"] { padding: 72px 20px 80px !important; }
+      [data-screen-label="Hero"] img { width: 110px !important; height: 110px !important; margin-bottom: 24px !important; }
+      [data-screen-label="Hero"] h1 { font-size: 32px !important; }
+      [data-screen-label="Hero"] p { font-size: 16px !important; }
+      [data-hero-cta] { flex-direction: column; width: 100%; }
+      [data-hero-cta] a { text-align: center; }
+
+      [data-screen-label="Services"] { padding: 64px 20px !important; }
+      [data-services-grid] { grid-template-columns: 1fr !important; }
+
+      [data-screen-label="About"] { padding: 64px 20px !important; }
+      [data-about-grid] { grid-template-columns: 1fr !important; gap: 40px !important; }
+      [data-about-stats] { gap: 28px !important; }
+
+      [data-screen-label="Contact"] { padding: 72px 20px !important; }
+      [data-screen-label="Contact"] h3 { font-size: 26px !important; }
+
+      [data-footer] { flex-direction: column; gap: 8px; text-align: center; padding: 24px 20px !important; }
+    }
+
+    @media (max-width: 420px) {
+      [data-screen-label="Hero"] h1 { font-size: 26px !important; }
+      [data-nav-title] { font-size: 14px !important; }
+    }
   </style>
 </helmet>
 
 <div style="background:{{ t.bg }}; color:{{ t.textPrimary }}; font-family:'IBM Plex Sans', sans-serif; min-height:100vh; width:100%; transition:background 0.25s ease, color 0.25s ease;">
 
   <!-- NAV -->
-  <div style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:20px 48px; background:{{ t.navBg }}; backdrop-filter:blur(6px); border-bottom:1px solid {{ t.border }};">
+  <div data-nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:20px 48px; background:{{ t.navBg }}; backdrop-filter:blur(6px); border-bottom:1px solid {{ t.border }};">
     <div style="display:flex; align-items:center; gap:12px;">
       <img src="assets/skull-dark-mode.gif" alt="Demilich Digital skull mark" style="width:36px; height:36px; image-rendering:pixelated; display:{{ t.darkLogoDisplay }};" />
       <img src="assets/skull-light-mode.gif" alt="Demilich Digital skull mark" style="width:36px; height:36px; image-rendering:pixelated; display:{{ t.lightLogoDisplay }};" />
-      <span style="font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:16px; letter-spacing:0.04em; color:{{ t.textPrimary }};">DEMILICH&nbsp;DIGITAL</span>
+      <span data-nav-title style="font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:16px; letter-spacing:0.04em; color:{{ t.textPrimary }};">DEMILICH&nbsp;DIGITAL</span>
     </div>
-    <div style="display:flex; align-items:center; gap:32px; font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.03em;">
+    <div data-nav-links style="display:flex; align-items:center; gap:32px; font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.03em;">
       <a href="#services" style="color:{{ t.textSecondary }};">Services</a>
       <a href="#about" style="color:{{ t.textSecondary }};">About</a>
       <a href="#contact" style="color:{{ t.textSecondary }};">Contact</a>
@@ -44,7 +74,7 @@
     <div style="position:relative; font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.2em; color:{{ t.textMuted }}; text-transform:uppercase; margin-bottom:20px;">Demilich Digital LLC &mdash; Independent Security Consulting</div>
     <h1 style="position:relative; font-family:'IBM Plex Mono', monospace; font-size:56px; font-weight:600; line-height:1.15; color:{{ t.textPrimary }}; max-width:820px; margin:0 0 24px;">Security work for people who build real systems.</h1>
     <p style="position:relative; font-family:'IBM Plex Sans', sans-serif; font-size:18px; line-height:1.6; color:{{ t.textSecondary }}; max-width:640px; margin:0 0 40px;">Independent consulting from a Ph.D. computer scientist with a decade in distributed systems, supply chain security, and network security &mdash; at Google, Square, and RedSeal.</p>
-    <div style="position:relative; display:flex; gap:16px;">
+    <div data-hero-cta style="position:relative; display:flex; gap:16px;">
       <a href="#contact" style="font-family:'IBM Plex Mono', monospace; font-size:14px; font-weight:600; padding:14px 28px; background:{{ t.btnBg }}; color:{{ t.btnText }}; border-radius:2px;">Start a conversation</a>
       <a href="#services" style="font-family:'IBM Plex Mono', monospace; font-size:14px; font-weight:600; padding:14px 28px; border:1px solid {{ t.border }}; color:{{ t.textPrimary }}; border-radius:2px;">See services</a>
     </div>
@@ -56,7 +86,7 @@
       <h2 style="font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.2em; text-transform:uppercase; color:{{ t.textMuted }}; margin:0;">01 &mdash; Services</h2>
       <p style="font-family:'IBM Plex Sans', sans-serif; font-size:16px; color:{{ t.textSecondary }}; max-width:480px; margin:0;">Scoped engagements across the stack &mdash; from low-level infrastructure to system architecture. If it touches production, it's in scope.</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1px; background:{{ t.border }}; border:1px solid {{ t.border }};">
+    <div data-services-grid style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1px; background:{{ t.border }}; border:1px solid {{ t.border }};">
       <div style="background:{{ t.cardBg }}; padding:36px 28px;">
         <div style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:{{ t.textMuted }}; margin-bottom:16px;">/ 01</div>
         <h3 style="font-family:'IBM Plex Mono', monospace; font-size:19px; color:{{ t.textPrimary }}; margin:0 0 12px;">Software Supply Chain Security</h3>
@@ -83,7 +113,7 @@
 
   <!-- ABOUT -->
   <div id="about" data-screen-label="About" style="padding:120px 48px; border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }}; background:{{ t.aboutBg }};">
-    <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1.6fr; gap:64px;">
+    <div data-about-grid style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1.6fr; gap:64px;">
       <div>
         <h2 style="font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.2em; text-transform:uppercase; color:{{ t.textMuted }}; margin:0 0 16px;">02 &mdash; About</h2>
         <div style="font-family:'IBM Plex Mono', monospace; font-size:24px; color:{{ t.textPrimary }}; line-height:1.4;">Brendan Benshoof<br/>Ph.D., Computer Science</div>
@@ -91,7 +121,7 @@
       <div>
         <p style="font-size:18px; line-height:1.75; color:{{ t.textSecondary }}; margin:0 0 20px;">Ten years building secure, large-scale infrastructure at Google, Square, and RedSeal &mdash; with depth in distributed systems, software supply chain security, and network security.</p>
         <p style="font-size:18px; line-height:1.75; color:{{ t.textSecondary }}; margin:0 0 32px;">Comfortable owning a problem end to end: from research question to something running in production. Demilich Digital is that same work, available directly.</p>
-        <div style="display:flex; gap:40px; flex-wrap:wrap;">
+        <div data-about-stats style="display:flex; gap:40px; flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono', monospace; font-size:22px; color:{{ t.textPrimary }};">10+ yrs</div>
             <div style="font-family:'IBM Plex Mono', monospace; font-size:12px; color:{{ t.textMuted }}; text-transform:uppercase; letter-spacing:0.1em;">Infrastructure &amp; security</div>
@@ -120,7 +150,7 @@
   </div>
 
   <!-- FOOTER -->
-  <div style="display:flex; align-items:center; justify-content:space-between; padding:28px 48px; border-top:1px solid {{ t.border }}; font-family:'IBM Plex Mono', monospace; font-size:12px; color:{{ t.textMuted }};">
+  <div data-footer style="display:flex; align-items:center; justify-content:space-between; padding:28px 48px; border-top:1px solid {{ t.border }}; font-family:'IBM Plex Mono', monospace; font-size:12px; color:{{ t.textMuted }};">
     <span>&copy; 2026 Demilich Digital LLC</span>
     <span>demilich.digital</span>
   </div>
