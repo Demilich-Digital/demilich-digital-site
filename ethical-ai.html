@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ext-resource-dependency" content="assets/skull-light-mode.gif">
+<meta name="ext-resource-dependency" content="assets/skull-dark-mode.gif">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: hidden; }
+    * { box-sizing: border-box; }
+    ::selection { background: #7F7F7F; color: #100016; }
+    img { max-width: 100%; }
+
+    @media (max-width: 720px) {
+      [data-nav] { padding: 14px 20px !important; flex-wrap: wrap; row-gap: 12px; }
+      [data-nav-links] { gap: 18px !important; font-size: 12px !important; }
+
+      [data-screen-label="EthicsHero"] { padding: 72px 20px 56px !important; }
+      [data-screen-label="EthicsHero"] h1 { font-size: 30px !important; }
+      [data-screen-label="EthicsHero"] p { font-size: 16px !important; }
+
+      [data-screen-label="Article"] { padding: 56px 20px !important; }
+      [data-screen-label="Article"] h2 { font-size: 22px !important; }
+      [data-screen-label="Article"] blockquote { padding: 16px 20px !important; font-size: 17px !important; }
+
+      [data-footer] { flex-direction: column; gap: 8px; text-align: center; padding: 24px 20px !important; }
+    }
+
+    @media (max-width: 900px) {
+      [data-screen-label="Article"] { flex-direction: column !important; gap: 32px !important; }
+      [data-outline] { position: static !important; top: auto !important; width: 100% !important; flex: none !important; }
+      [data-outline-title] { margin-bottom: 10px !important; }
+    }
+
+    @media (max-width: 420px) {
+      [data-screen-label="EthicsHero"] h1 { font-size: 25px !important; }
+      [data-nav-title] { font-size: 14px !important; }
+    }
+  </style>
+</helmet>
+
+<div style="background:{{ t.bg }}; color:{{ t.textPrimary }}; font-family:'IBM Plex Sans', sans-serif; min-height:100vh; width:100%; transition:background 0.25s ease, color 0.25s ease;">
+
+  <!-- NAV -->
+  <x-import from="./nav.js" component="Nav" t="{{ t }}" toggle-theme="{{ toggleTheme }}"></x-import>
+
+  <!-- HERO -->
+  <div data-screen-label="EthicsHero" style="position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; padding:100px 24px 72px; overflow:hidden; border-bottom:1px solid {{ t.border }};">
+    <div style="position:absolute; inset:0; background-image: linear-gradient({{ t.gridLine }} 1px, transparent 1px), linear-gradient(90deg, {{ t.gridLine }} 1px, transparent 1px); background-size: 40px 40px; opacity:0.35; pointer-events:none;"></div>
+    <div style="position:relative; font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.2em; color:{{ t.textMuted }}; text-transform:uppercase; margin-bottom:20px;">Demilich Digital LLC &mdash; Position Statement</div>
+    <h1 style="position:relative; font-family:'IBM Plex Mono', monospace; font-size:48px; font-weight:600; line-height:1.15; color:{{ t.textPrimary }}; max-width:760px; margin:0 0 24px;">Ethical Usage of Generative AI</h1>
+    <p style="position:relative; font-family:'IBM Plex Sans', sans-serif; font-size:18px; line-height:1.6; color:{{ t.textSecondary }}; max-width:680px; margin:0;">Demilich Digital LLC is my &ldquo;Corporate Person&rdquo; for commercial activity &mdash; consulting on technical and organization topics, and publishing software and creative works. That means my activities intersect with multiple types of Generative AI usage, each with very different ethical considerations.</p>
+  </div>
+
+  <!-- ARTICLE -->
+  <div data-screen-label="Article" style="display:flex; align-items:flex-start; gap:56px; padding:96px 48px; max-width:1040px; margin:0 auto;">
+
+    <!-- OUTLINE -->
+    <nav data-outline style="position:sticky; top:96px; flex:0 0 200px; align-self:flex-start;">
+      <div data-outline-title style="font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:{{ t.textMuted }}; margin-bottom:16px;">On this page</div>
+      <ol data-outline-list style="margin:0; padding-left:20px; display:flex; flex-direction:column; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:13px;">
+        <li style="color:{{ t.textMuted }};"><a href="#framework" style="color:{{ t.textSecondary }};">The Framework</a></li>
+        <li style="color:{{ t.textMuted }};"><a href="#art" style="color:{{ t.textSecondary }};">Artistic Assets &amp; Prose</a></li>
+        <li style="color:{{ t.textMuted }};"><a href="#oss" style="color:{{ t.textSecondary }};">Open Source Software</a></li>
+        <li style="color:{{ t.textMuted }};"><a href="#contract" style="color:{{ t.textSecondary }};">Contract Engineering</a></li>
+        <li style="color:{{ t.textMuted }};"><a href="#local-llms" style="color:{{ t.textSecondary }};">Local, Open-Weight LLMs</a></li>
+        <li style="color:{{ t.textMuted }};"><a href="#practice" style="color:{{ t.textSecondary }};">In Practice</a></li>
+      </ol>
+    </nav>
+
+    <div data-article-body style="flex:1; min-width:0; max-width:760px; font-size:18px; line-height:1.75; color:{{ t.textSecondary }};">
+
+    <h2 id="framework" style="scroll-margin-top:96px; font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; color:{{ t.textPrimary }}; margin:0 0 20px;">The Framework</h2>
+    <p style="margin:0 0 24px;">At its core, Generative AI is a mechanism of &ldquo;intellectual property laundering.&rdquo; It allows those with the economic resources to &ldquo;transform&rdquo; arbitrary works into a form that can be re-used without credit or compensation.</p>
+    <blockquote style="margin:0 0 24px; padding:4px 0 4px 20px; border-left:3px solid {{ t.border }}; color:{{ t.textPrimary }}; font-style:italic;">Thus the ethics of it are a function of that domain&rsquo;s relationship with intellectual property, and the behavior of those using it at scale in that domain.</blockquote>
+    <p style="margin:0 0 48px;">The four domains my work touches each land in a different place.</p>
+
+    <h2 id="art" style="scroll-margin-top:96px; font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; color:{{ t.textPrimary }}; margin:0 0 20px;">Artistic Assets &amp; Prose</h2>
+    <p style="margin:0 0 20px;">Artists have intrinsic value to our society in a way pure capitalism cannot value. Our cultural contract around art is about ensuring an environment where art and artists can be economically supported and sustained. Current image/asset generation models were largely trained on content without license, or license in a context well outside of its intent and in abuse of our social contract.</p>
+    <p style="margin:0 0 20px;">I do not see any ethical means of AI image generation for commercial use. Similarly, I would consider presenting AI generated images and prose in a media product as plagiarism.</p>
+    <p style="margin:0 0 20px;">I very intentionally use a simplified visual style so that my limited artistic capacity will suffice for any product I produce.</p>
+    <blockquote style="margin:0 0 48px; padding:4px 0 4px 20px; border-left:3px solid {{ t.border }}; color:{{ t.textPrimary }}; font-style:italic;">Any visual assets I did not directly create will be properly licensed and credited.</blockquote>
+
+    <h2 id="oss" style="scroll-margin-top:96px; font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; color:{{ t.textPrimary }}; margin:0 0 20px;">Open Source Software Engineering</h2>
+    <p style="margin:0 0 20px;">Unlike art, software has a very different cultural contract regarding intellectual property. Open Source Software is critical socialized infrastructure for the modern world &mdash; so effective that despite the hyper-capitalistic nature of the tech industry it continues to see investment and thrive. Intellectual property in software is largely abusive of our commons, whereas with art it is supportive. This dramatically changes my perspective on Generative AI in this domain.</p>
+    <p style="margin:0 0 20px;">I believe the overwhelming majority of software should be open source and shared. Unlike media, the usage of source code in training models is within our cultural intent. These models offer me a unique opportunity: I can use the &ldquo;laundering&rdquo; nature of Generative AI to produce more Open Source content.</p>
+    <p style="margin:0 0 20px;">I not only enthusiastically use generative AI services for Open Source, I feel an obligation to do so prolifically. This tool should be used to increase the value of our Commons &mdash; which comes with a responsibility to ensure any such contributions are of high quality and reliability.</p>
+    <blockquote style="margin:0 0 48px; padding:4px 0 4px 20px; border-left:3px solid {{ t.border }}; color:{{ t.textPrimary }}; font-style:italic;">Any software produced by Demilich Digital outside the context of contracts will be Open Source and freely available.</blockquote>
+
+    <h2 id="contract" style="scroll-margin-top:96px; font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; color:{{ t.textPrimary }}; margin:0 0 20px;">Contract Software Engineering</h2>
+    <p style="margin:0 0 20px;">My primary role is as a Software Engineer. I contract in the context of commercial software development. While I disagree with the norms of my industry, I have a legal and ethical responsibility to respect my contract with my client. I will use what power and freedom is available to me to encourage corporate contribution to the open source commons.</p>
+    <p style="margin:0 0 48px;">I use commercial LLMs for software development enthusiastically and effectively &mdash; including building infrastructure and training to do so more effectively.</p>
+
+    <h2 id="local-llms" style="scroll-margin-top:96px; font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; color:{{ t.textPrimary }}; margin:0 0 20px;">Open-Weight, Locally Hosted LLMs</h2>
+    <p style="margin:0 0 20px;">While I would prefer truly &ldquo;Open Source&rdquo; LLM models, open weight models offer a very different ethical situation than models provided as a service. They fundamentally flip the power relationship of the situation, and thus change the ethics.</p>
+    <p style="margin:0 0 20px;">Where scraping art and text to produce a model that is then used by the powerful to further disenfranchise others is theft, producing a model that enables everyone individually is a contribution to the commons. The lack of rent-extraction is a critical difference. Further, locally hosted models respect individual privacy and agency &mdash; where an integrated AI service is a surveillance and mass manipulation tool, a self-hosted tool does not further increase wealth disparity or erode the agency of individuals.</p>
+    <p style="margin:0 0 48px;">Media generated by an open model is still plagiarism, but using local LLMs as an automation, reference, and software development tool is a radically more positive ethical situation. I use local open-weight models for all use cases they are viable for, and I will continue to build tooling that enables local LLMs to contribute to society positively.</p>
+
+    <h2 id="practice" style="scroll-margin-top:96px; font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; color:{{ t.textPrimary }}; margin:0 0 20px;">In Practice</h2>
+    <ul style="margin:0; padding-left:22px;">
+      <li style="margin-bottom:14px;"><strong style="color:{{ t.textPrimary }};">Art &amp; visual assets</strong> &mdash; no AI-generated images or prose in shipped products; anything not made in-house is properly licensed and credited.</li>
+      <li style="margin-bottom:14px;"><strong style="color:{{ t.textPrimary }};">Independent open source</strong> &mdash; everything built outside a client contract ships open source and freely available, produced prolifically with generative AI.</li>
+      <li style="margin-bottom:14px;"><strong style="color:{{ t.textPrimary }};">Client contract work</strong> &mdash; commercial LLMs used enthusiastically and effectively, within the bounds of the contract, while pushing for open source contribution wherever possible.</li>
+      <li><strong style="color:{{ t.textPrimary }};">Automation &amp; dev tooling</strong> &mdash; local, open-weight models preferred wherever viable, for privacy, agency, and a healthier balance of power.</li>
+    </ul>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div data-footer style="display:flex; align-items:center; justify-content:space-between; padding:28px 48px; border-top:1px solid {{ t.border }}; font-family:'IBM Plex Mono', monospace; font-size:12px; color:{{ t.textMuted }};">
+    <span>&copy; 2026 Demilich Digital LLC</span>
+    <a href="./index.html" style="color:{{ t.textMuted }};">demilich.digital</a>
+  </div>
+
+</div>
+
+</x-dc>
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#100016"/><text x="50" y="62" font-family="monospace" font-size="34" font-weight="bold" fill="#EDE7EA" text-anchor="middle">DD</text></svg>
+</template>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: (this.props && this.props.theme) || 'dark' };
+
+  toggleTheme = () => {
+    this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' }));
+  };
+
+  renderVals() {
+    const dark = {
+      bg: '#100016', navBg: 'rgba(16,0,22,0.85)', cardBg: '#150019', aboutBg: '#0C0010',
+      border: '#2A0E36', gridLine: '#1E0A28',
+      textPrimary: '#FFFFFF', textSecondary: '#D6CEDB', textMuted: '#A79DAE',
+      btnBg: '#EDE7EA', btnText: '#100016',
+      darkLogoDisplay: 'block', lightLogoDisplay: 'none',
+      toggleLabel: 'LIGHT MODE'
+    };
+    const light = {
+      bg: '#F4F0F2', navBg: 'rgba(244,240,242,0.88)', cardBg: '#FFFFFF', aboutBg: '#EAE2E7',
+      border: '#D9D0DA', gridLine: '#E3DAE1',
+      textPrimary: '#170022', textSecondary: '#4A3856', textMuted: '#7F7F7F',
+      btnBg: '#170022', btnText: '#F4F0F2',
+      darkLogoDisplay: 'none', lightLogoDisplay: 'block',
+      toggleLabel: 'DARK MODE'
+    };
+    const t = this.state.theme === 'dark' ? dark : light;
+    return { t, toggleTheme: this.toggleTheme };
+  }
+}
+
+</script>
+</body>
+</html>
