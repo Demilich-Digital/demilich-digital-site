@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="ext-resource-dependency" content="assets/skull-light-mode.gif">
 <meta name="ext-resource-dependency" content="assets/skull-dark-mode.gif">
+<script src="./theme.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -151,10 +152,14 @@
 </template>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { theme: (this.props && this.props.theme) || 'dark' };
+  state = { theme: (this.props && this.props.theme) || (window.DemilichTheme ? window.DemilichTheme.get() : 'dark') };
 
   toggleTheme = () => {
-    this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' }));
+    this.setState(s => {
+      const next = s.theme === 'dark' ? 'light' : 'dark';
+      if (window.DemilichTheme) window.DemilichTheme.set(next);
+      return { theme: next };
+    });
   };
 
   renderVals() {
