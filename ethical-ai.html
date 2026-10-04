@@ -21,7 +21,7 @@
 
     @media (max-width: 720px) {
       [data-nav] { padding: 14px 20px !important; flex-wrap: wrap; row-gap: 12px; }
-      [data-nav-links] { gap: 18px !important; font-size: 12px !important; }
+      [data-nav-links] { gap: 10px 18px !important; max-width: 100%; font-size: 12px !important; }
 
       [data-screen-label="EthicsHero"] { padding: 72px 20px 56px !important; }
       [data-screen-label="EthicsHero"] h1 { font-size: 30px !important; }
@@ -67,7 +67,6 @@
     <nav data-outline style="position:sticky; top:96px; flex:0 0 200px; align-self:flex-start;">
       <div data-outline-title style="font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:{{ t.textMuted }}; margin-bottom:16px;">On this page</div>
       <ol data-outline-list style="margin:0; padding-left:20px; display:flex; flex-direction:column; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:13px;">
-        <li style="color:{{ t.textMuted }};"><a href="#framework" style="color:{{ t.textSecondary }};">The Framework</a></li>
         <li style="color:{{ t.textMuted }};"><a href="#art" style="color:{{ t.textSecondary }};">Artistic Assets &amp; Prose</a></li>
         <li style="color:{{ t.textMuted }};"><a href="#oss" style="color:{{ t.textSecondary }};">Open Source Software</a></li>
         <li style="color:{{ t.textMuted }};"><a href="#contract" style="color:{{ t.textSecondary }};">Contract Engineering</a></li>
@@ -78,9 +77,9 @@
 
     <div data-article-body style="flex:1; min-width:0; max-width:760px; font-size:18px; line-height:1.75; color:{{ t.textSecondary }};">
 
-    <h2 id="framework" style="scroll-margin-top:96px; font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; color:{{ t.textPrimary }}; margin:0 0 20px;">The Framework</h2>
+
     <p style="margin:0 0 24px;">At its core, Generative AI is a mechanism of &ldquo;intellectual property laundering.&rdquo; It allows those with the economic resources to &ldquo;transform&rdquo; arbitrary works into a form that can be re-used without credit or compensation.</p>
-    <blockquote style="margin:0 0 24px; padding:4px 0 4px 20px; border-left:3px solid {{ t.border }}; color:{{ t.textPrimary }}; font-style:italic;">Thus the ethics of it are a function of that domain&rsquo;s relationship with intellectual property, and the behavior of those using it at scale in that domain.</blockquote>
+    <p style="margin:0 0 24px;">Thus the ethics of it are a function of that domain&rsquo;s relationship with intellectual property, and the behavior of those using it at scale in that domain.</p>
     <p style="margin:0 0 48px;">The four domains my work touches each land in a different place.</p>
 
     <h2 id="art" style="scroll-margin-top:96px; font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; color:{{ t.textPrimary }}; margin:0 0 20px;">Artistic Assets &amp; Prose</h2>

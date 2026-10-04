@@ -21,7 +21,7 @@
 
     @media (max-width: 720px) {
       [data-nav] { padding: 14px 20px !important; flex-wrap: wrap; row-gap: 12px; }
-      [data-nav-links] { gap: 18px !important; font-size: 12px !important; }
+      [data-nav-links] { gap: 10px 18px !important; max-width: 100%; font-size: 12px !important; }
 
       [data-screen-label="Hero"] { padding: 72px 20px 80px !important; }
       [data-screen-label="Hero"] img { width: 110px !important; height: 110px !important; margin-bottom: 24px !important; }
@@ -32,6 +32,9 @@
 
       [data-screen-label="Services"] { padding: 64px 20px !important; }
       [data-services-grid] { grid-template-columns: 1fr !important; }
+
+      [data-screen-label="Portfolio"] { padding: 64px 20px !important; }
+      [data-portfolio-grid] { grid-template-columns: 1fr !important; }
 
       [data-screen-label="About"] { padding: 64px 20px !important; }
       [data-about-grid] { grid-template-columns: 1fr !important; gap: 40px !important; }
@@ -100,11 +103,33 @@
     <p style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:{{ t.textMuted }}; margin-top:28px;">Don't see your exact problem listed &mdash; ask anyway.</p>
   </div>
 
+  <!-- PORTFOLIO -->
+  <div id="portfolio" data-screen-label="Portfolio" style="padding:120px 48px; max-width:1200px; margin:0 auto; border-top:1px solid {{ t.border }};">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:56px; flex-wrap:wrap; gap:16px;">
+      <h2 style="font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.2em; text-transform:uppercase; color:{{ t.textMuted }}; margin:0;">02 &mdash; Portfolio</h2>
+      <p style="font-family:'IBM Plex Sans', sans-serif; font-size:16px; color:{{ t.textSecondary }}; max-width:480px; margin:0;">Open-source projects &mdash; a sample of the systems and security work I build on my own time.</p>
+    </div>
+    <div data-portfolio-grid style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1px; background:{{ t.border }}; border:1px solid {{ t.border }};">
+      <a href="https://github.com/Demilich-Digital/henge" style="display:block; background:{{ t.cardBg }}; padding:36px 28px; text-decoration:none;">
+        <div style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:{{ t.textMuted }}; margin-bottom:16px;">Java &middot; Spring</div>
+        <h3 style="font-family:'IBM Plex Mono', monospace; font-size:19px; color:{{ t.textPrimary }}; margin:0 0 12px;">Henge</h3>
+        <p style="font-size:15px; line-height:1.6; color:{{ t.textSecondary }}; margin:0 0 20px;">A Spring framework that lets one compiled JAR run as a monolith or as independently deployable services. Whether a service call stays in-process or crosses the network becomes a deployment-time decision, with compiler-enforced service boundaries.</p>
+        <span style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:{{ t.textPrimary }};">View on GitHub &rarr;</span>
+      </a>
+      <a href="https://github.com/BrendanBenshoof/sneakernet" style="display:block; background:{{ t.cardBg }}; padding:36px 28px; text-decoration:none;">
+        <div style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:{{ t.textMuted }}; margin-bottom:16px;">Go &middot; Cryptography</div>
+        <h3 style="font-family:'IBM Plex Mono', monospace; font-size:19px; color:{{ t.textPrimary }}; margin:0 0 12px;">Sneakernet</h3>
+        <p style="font-size:15px; line-height:1.6; color:{{ t.textSecondary }}; margin:0 0 20px;">Delay-tolerant encrypted messaging for outages, surveillance, and isolation. Fixed-size opaque blocks spread via internet relays, LAN sync, and USB media, with no central coordination and no metadata exposure.</p>
+        <span style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:{{ t.textPrimary }};">View on GitHub &rarr;</span>
+      </a>
+    </div>
+  </div>
+
   <!-- ABOUT -->
   <div id="about" data-screen-label="About" style="padding:120px 48px; border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }}; background:{{ t.aboutBg }};">
     <div data-about-grid style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1.6fr; gap:64px;">
       <div>
-        <h2 style="font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.2em; text-transform:uppercase; color:{{ t.textMuted }}; margin:0 0 16px;">02 &mdash; About</h2>
+        <h2 style="font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.2em; text-transform:uppercase; color:{{ t.textMuted }}; margin:0 0 16px;">03 &mdash; About</h2>
         <div style="font-family:'IBM Plex Mono', monospace; font-size:24px; color:{{ t.textPrimary }}; line-height:1.4;">Brendan Benshoof<br/>Ph.D., Computer Science</div>
       </div>
       <div>
@@ -130,7 +155,7 @@
 
   <!-- CONTACT -->
   <div id="contact" data-screen-label="Contact" style="padding:140px 48px; text-align:center;">
-    <h2 style="font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.2em; text-transform:uppercase; color:{{ t.textMuted }}; margin:0 0 24px;">03 &mdash; Contact</h2>
+    <h2 style="font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.2em; text-transform:uppercase; color:{{ t.textMuted }}; margin:0 0 24px;">04 &mdash; Contact</h2>
     <h3 style="font-family:'IBM Plex Mono', monospace; font-size:38px; color:{{ t.textPrimary }}; max-width:640px; margin:0 auto 32px;">Tell me what you're building and what worries you about it.</h3>
     <a href="mailto:dev@demilich.digital" style="display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:16px; font-weight:600; padding:18px 36px; background:{{ t.btnBg }}; color:{{ t.btnText }}; border-radius:2px; margin-bottom:20px;">dev@demilich.digital</a>
     <div>

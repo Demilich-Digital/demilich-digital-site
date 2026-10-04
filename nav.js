@@ -9,6 +9,7 @@ function Nav(props) {
   var links = [
     e('a', { key: 'home', href: './index.html', style: { color: t.textSecondary } }, 'Home'),
     e('a', { key: 'services', href: './index.html#services', style: { color: t.textSecondary } }, 'Services'),
+    e('a', { key: 'portfolio', href: './index.html#portfolio', style: { color: t.textSecondary } }, 'Portfolio'),
     e('a', { key: 'about', href: './index.html#about', style: { color: t.textSecondary } }, 'About'),
     e('a', { key: 'ethics', href: './ethical-ai.html', style: { color: t.textSecondary } }, 'Ethics'),
     e('a', { key: 'contact', href: './index.html#contact', style: { color: t.textSecondary } }, 'Contact')
@@ -33,7 +34,7 @@ function Nav(props) {
     ),
     e(
       'div',
-      { 'data-nav-links': true, style: { display: 'flex', alignItems: 'center', gap: 32, fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, letterSpacing: '0.03em' } },
+      { 'data-nav-links': true, style: { display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 12 + 'px ' + 32 + 'px', fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, letterSpacing: '0.03em' } },
       links.concat([
         e('button', {
           key: 'toggle',
