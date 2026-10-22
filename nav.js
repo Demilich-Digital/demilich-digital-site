@@ -3,16 +3,17 @@
 function Nav(props) {
   var t = props.t;
   var toggleTheme = props.toggleTheme;
+  // Path back to the site root; pages in subdirectories (blog/) pass "../".
+  var root = props.root || './';
   var e = React.createElement;
 
   // Same links, in the same order, on every page.
   var links = [
-    e('a', { key: 'home', href: './index.html', style: { color: t.textSecondary } }, 'Home'),
-    e('a', { key: 'services', href: './index.html#services', style: { color: t.textSecondary } }, 'Services'),
-    e('a', { key: 'portfolio', href: './index.html#portfolio', style: { color: t.textSecondary } }, 'Portfolio'),
-    e('a', { key: 'about', href: './index.html#about', style: { color: t.textSecondary } }, 'About'),
-    e('a', { key: 'ethics', href: './ethical-ai.html', style: { color: t.textSecondary } }, 'Ethics'),
-    e('a', { key: 'contact', href: './index.html#contact', style: { color: t.textSecondary } }, 'Contact')
+    e('a', { key: 'home', href: root + 'index.html', style: { color: t.textSecondary } }, 'Home'),
+    e('a', { key: 'blog', href: root + 'index.html#blog', style: { color: t.textSecondary } }, 'Blog'),
+    e('a', { key: 'services', href: root + 'index.html#services', style: { color: t.textSecondary } }, 'Services'),
+    e('a', { key: 'about', href: root + 'index.html#about', style: { color: t.textSecondary } }, 'About'),
+    e('a', { key: 'contact', href: root + 'index.html#contact', style: { color: t.textSecondary } }, 'Contact')
   ];
 
   return e(
@@ -27,9 +28,9 @@ function Nav(props) {
     },
     e(
       'a',
-      { href: './index.html', style: { display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' } },
-      e('img', { src: 'assets/skull-dark-mode.gif', alt: 'Demilich Digital skull mark', style: { width: 36, height: 36, imageRendering: 'pixelated', display: t.darkLogoDisplay } }),
-      e('img', { src: 'assets/skull-light-mode.gif', alt: 'Demilich Digital skull mark', style: { width: 36, height: 36, imageRendering: 'pixelated', display: t.lightLogoDisplay } }),
+      { href: root + 'index.html', style: { display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' } },
+      e('img', { src: root + 'assets/skull-dark-mode.gif', alt: 'Demilich Digital skull mark', style: { width: 36, height: 36, imageRendering: 'pixelated', display: t.darkLogoDisplay } }),
+      e('img', { src: root + 'assets/skull-light-mode.gif', alt: 'Demilich Digital skull mark', style: { width: 36, height: 36, imageRendering: 'pixelated', display: t.lightLogoDisplay } }),
       e('span', { 'data-nav-title': true, style: { fontFamily: "'IBM Plex Mono', monospace", fontWeight: 600, fontSize: 16, letterSpacing: '0.04em', color: t.textPrimary } }, 'DEMILICH DIGITAL')
     ),
     e(
